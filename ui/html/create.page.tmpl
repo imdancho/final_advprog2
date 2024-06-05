@@ -1,0 +1,71 @@
+{{template "base" .}}
+{{define "title"}}Create a New Service{{end}}
+{{define "main"}}
+<form action='/services/create' method='POST'>
+<input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+{{with .Form}}
+
+<div>
+<label>Title:</label>
+{{with .Errors.Get "title"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='text' name='title' value='{{.Get "title"}}'>
+</div>
+
+<div>
+<label>Content:</label>
+{{with .Errors.Get "content"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<textarea name='content'>{{.Get "content"}}</textarea>
+</div>
+
+<div>
+<label>Master:</label>
+{{with .Errors.Get "master"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='text' name='master' value='{{.Get "master"}}'>
+</div>
+
+<div>
+<label>Price:</label>
+{{with .Errors.Get "price"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='number' name='price' value='{{.Get "price"}}'>
+</div>
+
+
+<!--
+<div>
+<label>Delete in:</label>
+{{with .Errors.Get "expires"}}
+<label class='error'>{{.}}</label>
+{{end}}
+{{$exp := or (.Get "expires") "365"}}
+<input type='radio' name='expires' value='365' id="expires365" {{if (eq $exp "365")}}checked{{end}}> <label for="expires365"> One Year</label>
+<input type='radio' name='expires' value='7' id="expires7" {{if (eq $exp "7")}}checked{{end}}> <label for="expires7"> One Week</label>
+<input type='radio' name='expires' value='1' id="expires1" {{if (eq $exp "1")}}checked{{end}}> <label for="expires1"> One Day</label>
+</div>
+
+<div>
+<label>Delete in:</label>
+{{with .Errors.Get "forr"}}
+<label class='error'>{{.}}</label>
+{{end}}
+{{$exp := or (.Get "forr") "students"}}
+<input type='radio' name='forr' value='students' id="forrstudents" {{if (eq $exp "students")}}checked{{end}}>           <label for="forrstudents">      Students</label>
+<input type='radio' name='forr' value='staff' id="forrstaff" {{if (eq $exp "staff")}}checked{{end}}>                    <label for="forrstaff">         Staff</label>
+<input type='radio' name='forr' value='applicants' id="forrapplicants" {{if (eq $exp "applicants")}}checked{{end}}>     <label for="forrapplicants">    Applicants</label>
+<input type='radio' name='forr' value='researches' id="forrresearches" {{if (eq $exp "researches")}}checked{{end}}>     <label for="forrresearches">    Researches</label>
+</div>
+-->
+
+<div>
+<input type='submit' value='Publish service'>
+</div>
+{{end}}
+</form>
+{{end}}

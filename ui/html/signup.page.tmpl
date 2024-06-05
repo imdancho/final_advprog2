@@ -1,0 +1,61 @@
+{{template "base" .}}
+{{define "title"}}Signup{{end}}
+{{define "main"}}
+    <h2>Signup page</h2>
+<form action='/user/signup' method='POST' novalidate>
+<input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+
+{{with .Form}}
+
+<div>
+<label>Full name:</label>
+{{with .Errors.Get "full_name"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='text' name='full_name' value='{{.Get "full_name"}}'>
+</div>
+
+<div>
+<label>Email:</label>
+{{with .Errors.Get "email"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='email' name='email' value='{{.Get "email"}}'>
+</div>
+
+<div>
+<label>Mobile phone:</label>
+{{with .Errors.Get "phone"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type="tel" name="phone" value='{{.Get "phone"}}' placeholder="87777777777" pattern="[0-9]{11}" required><br>
+<!-- <input type='text' name='phone' value='{{.Get "phone"}}'> -->
+<small>Format: 87777777777</small><br><br>
+</div>
+
+
+<div>
+<label>Role:</label>
+{{with .Errors.Get "role"}}
+<label class='error'>{{.}}</label>
+{{end}}
+{{$exp := or (.Get "role") "client"}}
+<input type='radio' name='role' value='client' id="roleclient" {{if (eq $exp "client")}}checked{{end}}> <label for="roleclient"> Client</label>
+<!--<input type='radio' name='role' value='teacher' id="roleteacher" {{if (eq $exp "teacher")}}checked{{end}}> <label for="roleteacher"> Teacher</label> -->
+</div>
+
+<div>
+<label>Password:</label>
+{{with .Errors.Get "password"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='password' name='password'>
+</div>
+
+<div>
+<input type='submit' value='Signup'>
+</div>
+
+{{end}}
+</form>
+{{end}}

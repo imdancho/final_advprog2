@@ -1,0 +1,21 @@
+{{template "base" .}}
+{{define "title"}}Delete the Service{{end}}
+{{define "main"}}
+<form action='/appointments/delete' method='POST'>
+<input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+{{with .Form}}
+
+<div>
+<label>ID of the appointment you want to delete:</label>
+{{with .Errors.Get "appointment_id"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='number' name='appointment_id' value='{{.Get "appointment_id"}}'>
+</div>
+
+<div>
+<input type='submit' value='Delete appointment'>
+</div>
+{{end}}
+</form>
+{{end}}

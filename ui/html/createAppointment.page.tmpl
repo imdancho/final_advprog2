@@ -1,0 +1,29 @@
+{{template "base" .}}
+{{define "title"}}Make an appointment{{end}}
+{{define "main"}}
+<form action='/appointments/create' method='POST'>
+<input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+{{with .Form}}
+
+<div>
+<label>Name of the service:</label>
+{{with .Errors.Get "service_id"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='text' name='service_id' value='{{.Get "service_id"}}'>
+</div>
+
+<div>
+<label>Date and time:</label>
+{{with .Errors.Get "time"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type="datetime-local" name="time" value='{{.Get "time"}}'>
+</div>
+
+<div>
+<input type='submit' value='Make an appointment'>
+</div>
+{{end}}
+</form>
+{{end}}

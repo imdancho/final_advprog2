@@ -1,0 +1,21 @@
+{{template "base" .}}
+{{define "title"}}Delete Review{{end}}
+{{define "main"}}
+<form action='/reviews/delete' method='POST'>
+<input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+{{with .Form}}
+
+<div>
+<label>ID of the review you want to delete:</label>
+{{with .Errors.Get "review_id"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='number' name='review_id' value='{{.Get "review_id"}}'>
+</div>
+
+<div>
+<input type='submit' value='Delete review'>
+</div>
+{{end}}
+</form>
+{{end}}

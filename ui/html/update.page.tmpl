@@ -1,0 +1,29 @@
+{{template "base" .}}
+{{define "title"}}Update the Service{{end}}
+{{define "main"}}
+<form action='/services/update' method='POST'>
+<input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+{{with .Form}}
+
+<div>
+<label>Title of the service you want to update:</label>
+{{with .Errors.Get "title"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='text' name='title' value='{{.Get "title"}}'>
+</div>
+
+<div>
+<label>New price:</label>
+{{with .Errors.Get "price"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='number' name='price' value='{{.Get "price"}}'>
+</div>
+
+<div>
+<input type='submit' value='Update service'>
+</div>
+{{end}}
+</form>
+{{end}}

@@ -1,0 +1,29 @@
+{{template "base" .}}
+{{define "title"}}Update the Service{{end}}
+{{define "main"}}
+<form action='/appointments/update' method='POST'>
+<input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+{{with .Form}}
+
+<div>
+<label>ID of the appointment that you want to update:</label>
+{{with .Errors.Get "appointment_id"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='number' name='appointment_id' value='{{.Get "appointment_id"}}'>
+</div>
+
+<div>
+<label>New date and time:</label>
+{{with .Errors.Get "time"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type="datetime-local" name="time" value='{{.Get "time"}}'>
+</div>
+
+<div>
+<input type='submit' value='Update appointment'>
+</div>
+{{end}}
+</form>
+{{end}}

@@ -1,0 +1,32 @@
+{{template "base" .}}
+{{define "title"}}Signup{{end}}
+{{define "main"}}
+    <h2>Code confirmation page</h2>
+<form action='/user/confirm' method='POST' novalidate>
+<input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+
+{{with .Form}}
+
+<div>
+<label>Email:</label>
+{{with .Errors.Get "email"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='email' name='email' value='{{.Get "email"}}'>
+</div>
+
+<div>
+<label>Code:</label>
+{{with .Errors.Get "code"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='number' name='code' value='{{.Get "code"}}'>
+</div>
+
+<div>
+<input type='submit' value='Confirm'>
+</div>
+
+{{end}}
+</form>
+{{end}}

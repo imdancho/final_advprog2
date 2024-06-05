@@ -1,0 +1,110 @@
+{{template "base" .}}
+{{define "title"}}Home{{end}}
+{{define "main"}}
+
+
+<div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="background-image: url(static/img/beauty_salon.jpg); background-position: center">
+            <div class="carousel-caption">
+                <h1>High quality equipment and building</h1>
+                <p>Our salon has a comfortable building with high quality equipment</p>
+                <a href="/about" class="btn btn-secondary">
+                    Learn about us
+                </a>
+            </div>
+        </div>
+        <div class="carousel-item" style="background-image: url(static/img/products.jpg); background-position: center">
+            <div class="carousel-caption">
+                <h1>Variety of high quality products</h1>
+                <p>We use only high quality beauty products for our customers</p>
+                <a href="/products" class="btn btn-secondary">
+                    See our range of products
+                </a>
+            </div>
+        </div>
+        <div class="carousel-item" style="background-image: url(static/img/consult.jpg); background-position: center">
+            <div class="carousel-caption">
+                <h1>Customer review</h1>
+                <p>Our professionals care about a communication with customers</p>
+                <a href="customer_review.html" class="btn btn-secondary">
+                    Leave a review or get a consultation
+                </a>
+            </div>
+        </div>
+        <a href="#homeCarousel" class="carousel-control-prev" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a href="#homeCarousel" class="carousel-control-next" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+    </div>
+</div>
+
+<div class="container marketing" id="cards">
+
+    <div class="row">
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="static/img/daniar.jpg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"></image></svg>
+
+            <h2>Mukhradinuly Daniyar</h2>
+            <p>Founder of the salon</p>
+            <p><a class="btn btn-secondary" href="/about">Contact »</a></p>
+        </div>
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="static/img/nursultan.jpg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"></image></svg>
+
+            <h2>Nursultan Nurlybayev</h2>
+            <p>Co-founder of the salon</p>
+            <p><a class="btn btn-secondary" href="/about">Contact »</a></p>
+        </div>
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="static/img/temirlan.jpg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"></image></svg>
+
+            <h2>Andasov Temirlan</h2>
+            <p>Co-founder of the salon</p>
+            <p><a class="btn btn-secondary" href="/about">Contact »</a></p>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">High Hygiene. <span class="text-muted">It is as clean as it gets.</span></h2>
+            <p class="lead">We care about a clean working environment in our salon. Our working space gets cleaned consistently in order to maintain a comfortable experience</p>
+        </div>
+        <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="static/img/beauty_tools.jpg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"></image></svg>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Specialists from all over. <span class="text-muted">Diversity is the key.</span></h2>
+            <p class="lead">Our salon provides the best from the best. This means you will experience a first class service from certified experts in the field</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="static/img/beauty_pro.jpg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"></image></svg>
+
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">High quality technologies. <span class="text-muted">We live in the modern era after all.</span></h2>
+            <p class="lead">We invested a great deal in order to ensure that our customers get the benefits of the latest tech in the world of beauty.</p>
+        </div>
+        <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><image href="static/img/beauty_tech.jpg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice"></image></svg>
+
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+</div>
+
+{{end}}

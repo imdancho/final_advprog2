@@ -1,0 +1,40 @@
+{{template "base" .}}
+
+{{define "title"}}{{end}}
+    {{define "main"}}
+        <h2>Services list</h2>
+            <form action="/services" method="get">
+                <label for="sort">Sort:</label>
+                <select id="sort" name="sort">
+                    <option value="title">By Name</option>
+                    <option value="price">By Price</option>
+                </select>
+                <select id="sort_type" name="sort_type">
+                    <option value="ASC">By increase</option>
+                    <option value="DESC">By decreasing</option>
+                </select>
+                <button type="submit">Apply Sorting</button>
+            </form>
+        {{if .Services}}
+            <table>
+                <tr>
+                    <th>Service name</th>
+                    <th>Description</th>
+                    <th>Master name</th>
+                    <th>Price</th>
+                    <th>ID</th>
+                </tr>
+                {{range .Services}}
+                    <tr>
+                        <td><a href='/services/{{.ID}}'>{{.Title}}</a></td>
+                        <td>{{.Content}}</td>
+                        <td>{{.Master}}</td>
+                        <td>{{.Price}}</td>
+                        <td>#{{.ID}}</td>
+                    </tr>
+                {{end}}
+            </table>
+        {{else}}
+            <p>There's nothing to see here... yet!</p>
+    {{end}}
+{{end}}

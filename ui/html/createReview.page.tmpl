@@ -1,0 +1,21 @@
+{{template "base" .}}
+{{define "title"}}Leave a review{{end}}
+{{define "main"}}
+<form action='/reviews/create' method='POST'>
+<input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+{{with .Form}}
+
+<div>
+<label>Your review:</label>
+{{with .Errors.Get "content"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<textarea name='content'>{{.Get "content"}}</textarea>
+</div>
+
+<div>
+<input type='submit' value='Leave a review'>
+</div>
+{{end}}
+</form>
+{{end}}

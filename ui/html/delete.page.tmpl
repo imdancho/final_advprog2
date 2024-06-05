@@ -1,0 +1,21 @@
+{{template "base" .}}
+{{define "title"}}Delete the Service{{end}}
+{{define "main"}}
+<form action='/services/delete' method='POST'>
+<input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+{{with .Form}}
+
+<div>
+<label>Title of the service you want to delete:</label>
+{{with .Errors.Get "title"}}
+<label class='error'>{{.}}</label>
+{{end}}
+<input type='text' name='title' value='{{.Get "title"}}'>
+</div>
+
+<div>
+<input type='submit' value='Delete service'>
+</div>
+{{end}}
+</form>
+{{end}}

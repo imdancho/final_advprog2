@@ -1,0 +1,6 @@
+2024/04/25 13:31:55 
+
+---------------------------------
+
+INFO	2024/04/25 13:31:55 Starting server on :4000
+ERROR	2024/04/25 13:31:55 main.go:105: listen tcp :4000: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.

@@ -1,0 +1,33 @@
+{{template "base" .}}
+{{define "title"}}{{end}}
+    {{define "main"}}
+        <h2>Reviews list</h2>
+            <form action="/reviews" method="get">
+                <label for="filter">Filters:</label>
+                <select id="filter" name="filter">
+                    <option value="my">Show my reviews</option>
+                    <option value="all">Show all reviews</option>
+                </select>
+                <button type="submit">Apply Filters</button>
+            </form>
+        {{if .Snippets}}
+            <table>
+                <tr>
+                    <th>User id</th>
+                    <th>Content</th>
+                    <th>Created</th>
+                    <th>Review ID</th>
+                </tr>
+                {{range .Snippets}}
+                    <tr>
+                        <td>{{.User_id}}</td>
+                        <td>{{.Content}}</td>
+                        <td>{{.Created}}</td>
+                        <td>#{{.ID}}</td>
+                    </tr>
+                {{end}}
+            </table>
+        {{else}}
+            <p>There's nothing to see here... yet!</p>
+    {{end}}
+{{end}}

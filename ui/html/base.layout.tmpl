@@ -1,0 +1,140 @@
+{{define "base"}}
+    <!doctype html>
+    <html lang='en'>
+
+<head>
+<meta charset='utf-8'>
+<title>{{template "title" .}} - Beauty Salon</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link rel='stylesheet' href='/static/css/main.css'>
+<link rel='shortcut icon' href='/static/img/favicon.ico' type='image/x-icon'>
+<script src="https://kit.fontawesome.com/8b39912d41.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+<style>
+.dropbtn {
+  //background-color: #white;
+  color: black;
+  padding: 0 18px 18px 0;
+  //font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+    width: 100%
+  z-index: 1;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: 100%
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  //padding: 12px 16px;
+  //text-decoration: none;
+  display: block;
+    width: 100%
+  z-index: 1;
+
+
+}
+
+.dropdown-content a:hover {background-color: #ddd;   width: 100%;  z-index: 1;}
+
+.dropdown:hover .dropdown-content {display: block;   width: 100%; z-index: 1;}
+
+.dropdown:hover .dropbtn {background-color: #caa6a6;   width: 100%; z-index: 1;}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<div id="mainText" class="container text-center">
+    <h1 class="display-2"><img src="static/img/logo.png" alt="">Beauty Salon</h1>
+    <i>Beautifying services for everyone</i>
+</div>
+</header>
+
+<nav >
+<div align="left" style="width:70%">
+
+<a href='/'>Home</a>
+
+<div class="dropdown" style="width:auto">
+  <button class="dropbtn">Services</button>
+  <div class="dropdown-content">
+    <a href='/services'>Services</a>
+    {{if .IsAdmin}}
+        <a href='/services/create'>Add services list</a>
+        <a href='/services/update'>Update services</a>
+        <a href='/services/delete'>Delete services</a>
+    {{end}}
+  </div>
+</div>
+
+<div class="dropdown" style="width:auto">
+  <button class="dropbtn">Appointments</button>
+  <div class="dropdown-content">
+    {{if .IsAuthenticated}}
+        <a href='/appointments/create'>Create appointment</a>
+        <a href='/appointments'>Appointments list</a>
+    {{end}}
+    {{if .IsAdmin}}
+        <a href='/appointments/update'>Update appointments</a>
+        <a href='/appointments/delete'>Delete appointments</a>
+    {{end}}
+  </div>
+</div>
+
+<div class="dropdown" style="width:auto">
+  <button class="dropbtn">Reviews</button>
+  <div class="dropdown-content">
+    <a href='/reviews'>Reviews</a>
+    {{if .IsAuthenticated}}
+        <a href='/reviews/create'>Add review</a>
+    {{end}}
+    {{if .IsAdmin}}
+        <a href='/reviews/delete'>Delete review</a>
+    {{end}}
+  </div>
+</div>
+
+<a href='/about'>About Us</a>
+</div>
+<div align="right" style="width:30%">
+    {{if .IsAuthenticated}}
+        <form action='/user/logout' method='POST'>
+            <!-- Include the CSRF token -->
+            <input type='hidden' name='csrf_token' value='{{.CSRFToken}}'>
+            <button>Logout</button>
+        </form>
+    {{else}}
+        <a href='/user/signup'>Signup</a>
+        <a href='/user/login'>Login</a>
+    {{end}}
+</div>
+</nav>
+
+<main>
+{{template "main" .}}
+</main>
+
+{{template "footer" .}}
+
+<script src="/static/js/main.js" type="text/javascript"></script>
+</body>
+
+</html>
+
+{{end}}

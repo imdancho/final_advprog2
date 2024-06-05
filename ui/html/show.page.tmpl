@@ -1,0 +1,15 @@
+{{template "base" .}}
+{{define "title"}}Service #{{.Service.ID}}{{end}}
+{{define "main"}}
+{{with .Service}}
+<div class='service'>
+<div class='metadata'>
+<strong>{{.Title}}</strong>
+<span>#{{.ID}}</span>
+</div>
+<pre><code>{{.Content}}</code></pre>
+<div class='metadata'>
+</div>
+</div>
+{{end}}
+{{end}}

@@ -1,0 +1,33 @@
+{{template "base" .}}
+
+{{define "title"}}{{end}}
+    {{define "main"}}
+        <h2>Appointments list</h2>
+            <form action="/appointments" method="get">
+
+                {{if .Appointments}}
+                    <table>
+                        <tr>
+                            <th>User_id</th>
+                            <th>Service_Name</th>
+                            <th>Time</th>
+                            <th>ID</th>
+                        </tr>
+                        {{range .Appointments}}
+                            <tr>
+                                <td>{{.User_id}}</td>
+                                <td>{{.Service_id}}</td>
+                                <td>{{.Time}}</td>
+                                <td>#{{.ID}}</td>
+                            </tr>
+                        {{end}}
+                    </table>
+                {{else}}
+                    <p>There's nothing to see here... yet!</p>
+                {{end}}
+            <br>
+            <label for="page">Page:</label>
+            <input type="number" id="page" name="page" min="1">
+            <button type="submit">Go</button>
+        </form>
+{{end}}
